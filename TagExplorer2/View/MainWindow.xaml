@@ -3,10 +3,180 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:local="clr-namespace:TagExplorer2.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ToolBar Grid.Row="0" Background="White">
+
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Border Background="White" CornerRadius="10" BorderThickness="1" Padding="5,0,0,0">
+                                            <Border.BorderBrush>
+                                                <SolidColorBrush Color="#84AD02"/>
+                                            </Border.BorderBrush>
+                                            <ScrollViewer x:Name="PART_ContentHost"/>
+                                        </Border>
+
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox x:Name="SearchBox"     Width="250" ></TextBox>
+                <Button Margin="-50,0,0,0" Name="btSearch" Content="搜索" Width="50" DockPanel.Dock="Right">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Border CornerRadius="0,11,11,0" Name="border" Background="#84AD02">
+                                    <ContentControl Foreground="White" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" Value="#DE5800" TargetName="border" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </StackPanel>
+
+            <Separator Margin="10,0,10,0"></Separator>
+            <CheckBox   Height="22" Width="120" Name="ckNotUseEverything"   Tag="禁用Everything" Margin="0,0,10,0" >使用Everything</CheckBox>
+            <CheckBox  Height="22" Width="120"  Name="ckSearchAll"   Tag="不限制搜索范围" Margin="0,0,10,0" >限制搜索范围</CheckBox>
+            <Button Width="30" Name="btUp" ToolTip="回到上一级Tag">
+                <Button.Content>
+                    <Image Source="pack://siteoforigin:,,,/Resources/parent.png" ></Image>
+                </Button.Content>
+            </Button>
+            <Button Width="30" Name="btHome" ToolTip="回到根Tag">
+                <Button.Content>
+                    <Image Source="pack://siteoforigin:,,,/Resources/home.png" ></Image>
+                </Button.Content>
+            </Button>
+            <Button Width="30" Name="btExport" ToolTip="导出所有的Tag和文档信息">
+                <Button.Content>
+                    <Image Source="pack://siteoforigin:,,,/Resources/export.png" ></Image>
+                </Button.Content>
+            </Button>
+            <Button Width="30" Name="btImport" ToolTip="导入Tag数据(Json格式）">
+                <Button.Content>
+                    <Image Source="pack://siteoforigin:,,,/Resources/import.png" ></Image>
+                </Button.Content>
+            </Button>
+
+            
+
+            <Button Width="30"  ToolTip="保存">
+                <Button.Content>
+                    <Image Source="pack://siteoforigin:,,,/Resources/information.png" ></Image>
+                </Button.Content>
+            </Button>
+
+            <Button Width="30" x:Name="test"  ToolTip="切换布局模式">
+                <Button.Content>
+                    <Image Source="pack://siteoforigin:,,,/Resources/information.png" ></Image>
+                </Button.Content>
+            </Button>
+        </ToolBar>
+
+
+
+        <avalonDock:DockingManager x:Name="dockingManager" Grid.Row="2">
+            <avalonDock:LayoutRoot x:Name="root">
+
+                <avalonDock:LayoutPanel Orientation="Horizontal" x:Name="panel">
+
+
+
+
+
+                    <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical" x:Name="lGroup">
+
+                        <avalonDock:LayoutAnchorablePane DockWidth="150" x:Name="apane12" >
+                            <avalonDock:LayoutAnchorable Title="顶层标签" CanClose="False" CanHide="False" x:Name="ID_MainCanvas">
+                                
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+
+                        <avalonDock:LayoutAnchorablePane DockWidth="50" x:Name="apane13">
+                            <avalonDock:LayoutAnchorable Title="底层标签" CanClose="False" CanHide="False" x:Name="ID_SubCanvas">
+                                
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+
+
+
+
+                    </avalonDock:LayoutAnchorablePaneGroup>
+
+
+                    <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical" x:Name="rGroup">
+
+
+
+                        <avalonDock:LayoutAnchorablePane DockWidth="150" x:Name="apane2">
+                            <avalonDock:LayoutAnchorable Title="查找结果" CanClose="False" CanHide="False" x:Name="ID_SearchResult">
+                                
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+
+                        <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Horizontal" x:Name="markdownGroup">
+
+                            <avalonDock:LayoutAnchorablePane DockWidth="150" x:Name="apane22">
+
+
+                                <avalonDock:LayoutAnchorable Title="Markdown编辑区" CanClose="False" CanHide="False" x:Name="ID_MarkdownEditor">
+                                    <DockPanel  x:Name="dockPanel"  >
+                                     
+
+                                    </DockPanel>
+                                </avalonDock:LayoutAnchorable>
+                            </avalonDock:LayoutAnchorablePane>
+
+                            <avalonDock:LayoutAnchorablePane DockWidth="150" x:Name="apane23">
+                                <avalonDock:LayoutAnchorable Title="Markdown显示区" CanClose="False" CanHide="False" x:Name="ID_MarkdownPreview">
+                                    
+                                </avalonDock:LayoutAnchorable>
+                            </avalonDock:LayoutAnchorablePane>
+                        </avalonDock:LayoutAnchorablePaneGroup>
+
+
+                    </avalonDock:LayoutAnchorablePaneGroup>
+
+                    <!--</avalonDock:LayoutAnchorablePaneGroup>
+
+                    <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical" x:Name="apaneGroupLeft">-->
+
+
+                </avalonDock:LayoutPanel>
+
+
+
+
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
+
+
     </Grid>
 </Window>
