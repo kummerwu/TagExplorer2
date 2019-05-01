@@ -62,9 +62,7 @@
             </StackPanel>
 
             <Separator Margin="10,0,10,0"></Separator>
-            <CheckBox   Height="22" Width="120" Name="ckNotUseEverything"   Tag="禁用Everything" Margin="0,0,10,0" >使用Everything</CheckBox>
-            <CheckBox  Height="22" Width="120"  Name="ckSearchAll"   Tag="不限制搜索范围" Margin="0,0,10,0" >限制搜索范围</CheckBox>
-            <Button Width="30" Name="btUp" ToolTip="回到上一级Tag">
+            <Button Width="30"  Name="btUp" ToolTip="回到上一级Tag">
                 <Button.Content>
                     <Image Source="pack://siteoforigin:,,,/Resources/parent.png" ></Image>
                 </Button.Content>
