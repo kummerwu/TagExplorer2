@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Input;assembly=Microsoft.Expression.Interactions"
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="300" d:DesignWidth="300" 
              DataContext="{Binding Source={StaticResource Locator},Path=ToolsBar}">
     
     <Grid>
@@ -41,18 +41,19 @@
                         </Setter>
                     </Style>
                 </StackPanel.Resources>
-                <TextBox x:Name="InputTxtBox"     Width="250" 
+                
+                <TextBox x:Name="InputTxtBox"     
+                         Width="250" 
                          Text="{Binding InputString,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
-                    
                     <i:Interaction.Triggers>
                         <ei:KeyTrigger FiredOn="KeyDown" Key="Return" >
                             <i:InvokeCommandAction Command="{Binding SearchCommand}"></i:InvokeCommandAction>
                         </ei:KeyTrigger> 
                     </i:Interaction.Triggers>
-                    
-
                 </TextBox>
-                <Button Margin="-50,0,0,0" Name="btSearch" Content="搜索" Width="50" DockPanel.Dock="Right" Command="{Binding SearchCommand}">
+                
+                <Button Margin="-50,0,0,0" Name="btSearch" Content="搜索" Width="50" DockPanel.Dock="Right" 
+                        Command="{Binding SearchCommand}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
