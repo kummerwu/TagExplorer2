@@ -8,10 +8,9 @@
              mc:Ignorable="d" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
             xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Input;assembly=Microsoft.Expression.Interactions"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.DataContext>
-        <localVM:ToolsBarViewModel></localVM:ToolsBarViewModel>
-    </UserControl.DataContext>
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding Source={StaticResource Locator},Path=ToolsBar}">
+    
     <Grid>
         <ToolBar Grid.Row="0" Background="White">
 
@@ -44,6 +43,7 @@
                 </StackPanel.Resources>
                 <TextBox x:Name="InputTxtBox"     Width="250" 
                          Text="{Binding InputString,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                    
                     <i:Interaction.Triggers>
                         <ei:KeyTrigger FiredOn="KeyDown" Key="Return" >
                             <i:InvokeCommandAction Command="{Binding SearchCommand}"></i:InvokeCommandAction>

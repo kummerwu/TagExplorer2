@@ -81,7 +81,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Utils\DelegateCommand.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ToolsBarViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

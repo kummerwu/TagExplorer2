@@ -43,17 +43,24 @@ namespace TagExplorer2.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<MainWindowViewModel>();
+            SimpleIoc.Default.Register<ToolsBarViewModel>();
         }
 
-        public MainViewModel Main
+        public MainWindowViewModel MainWindow
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<MainWindowViewModel>();
             }
         }
-        
+        public ToolsBarViewModel ToolsBar
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ToolsBarViewModel>();
+            }
+        }
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

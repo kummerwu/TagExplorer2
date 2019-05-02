@@ -11,7 +11,7 @@ using TagExplorer2.Utils;
 
 namespace TagExplorer2.ViewModel
 {
-    class ToolsBarViewModel: ViewModelBase
+    public class ToolsBarViewModel: ViewModelBase
     {
         
 

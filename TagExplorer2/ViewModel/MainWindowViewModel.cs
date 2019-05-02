@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TagExplorer2.ViewModel
 {
-    class MainWindowViewModel: ViewModelBase
+    public class MainWindowViewModel: ViewModelBase
     {
         
 
