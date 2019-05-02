@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TagExplorer2.ViewModel;
 
 namespace TagExplorer2.View
 {
@@ -20,9 +21,25 @@ namespace TagExplorer2.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        ToolsBarViewModel vmToolbar = null;
+        MainWindowViewModel vmMainWindow = null;
         public MainWindow()
         {
             InitializeComponent();
+            vmToolbar = toolBar.DataContext as ToolsBarViewModel;
+            vmMainWindow = DataContext as MainWindowViewModel;
+            vmToolbar.PropertyChanged += VmToolbar_PropertyChanged;
+            
         }
+
+        private void VmToolbar_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e != null && e.PropertyName == "SearchTxt")
+            {
+                vmMainWindow.SearchTxt = vmToolbar.SearchTxt;
+            }
+        }
+
+       
     }
 }

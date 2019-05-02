@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,9 +11,12 @@ using TagExplorer2.Utils;
 
 namespace TagExplorer2.ViewModel
 {
-    class ToolsBarViewModel: INotifyPropertyChanged
+    class ToolsBarViewModel: ViewModelBase
     {
-        string _searchTxt = "test";
+        
+
+        public string InputString { get; set; }
+        string _searchTxt = "";
         public string SearchTxt
         {
             get
@@ -21,47 +25,26 @@ namespace TagExplorer2.ViewModel
             }
             set
             {
-                bool oldStatus = string.IsNullOrEmpty(_searchTxt);
                 _searchTxt = value;
-                bool newStatus = string.IsNullOrEmpty(_searchTxt);
-                if(oldStatus!=newStatus)
-                {
-                    SearchCommand.RaiseCanExcuteChanged();
-                }
                 RaisePropertyChanged("SearchTxt");
             }
         }
-
-        private void RaisePropertyChanged(string propertyName)
-        {
-            // take a copy to prevent thread issues
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
         private DelegateCommand searchCmd = null;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public DelegateCommand SearchCommand {
             get
             {
                 if(searchCmd==null)
                 {
-                    searchCmd = new DelegateCommand(this.Search, this.CanSearch);
+                    searchCmd = new DelegateCommand(s=> 
+                    {
+                        SearchTxt = InputString;
+                        MessageBox.Show(SearchTxt);
+                    }, 
+                    param=>true);
                 }
                 return searchCmd;
             }
         }
-        public void Search(object param)
-        {
-            MessageBox.Show(SearchTxt);
-        }
-        public bool CanSearch(object param)
-        {
-            return !string.IsNullOrEmpty(SearchTxt);
-        }
+        
     }
 }
