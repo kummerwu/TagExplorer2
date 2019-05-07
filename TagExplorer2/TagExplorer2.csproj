@@ -119,6 +119,9 @@
     <Compile Include="Model\Tag\ITagDB.cs" />
     <Compile Include="Model\Tag\SQLTagDB.cs" />
     <Compile Include="Model\Tag\TagDBCmd.cs" />
+    <Compile Include="Model\Tag\TagDBFactory.cs" />
+    <Compile Include="Model\Tag\TagDBLogger.cs" />
+    <Compile Include="Model\Tag\TagSwitchDB.cs" />
     <Compile Include="Utils\ClipboardConst.cs" />
     <Compile Include="Utils\ClipboardSafe.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
@@ -126,11 +129,20 @@
     <Compile Include="Utils\IDisposableFactory.cs" />
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\TipsCenter.cs" />
-    <Compile Include="ViewModel\LayoutMode.cs" />
+    <Compile Include="ViewModel\TagLayout\FastFontCalculator.cs" />
+    <Compile Include="ViewModel\TagLayout\GTagBox.cs" />
+    <Compile Include="ViewModel\TagLayout\GTagBoxTree.cs" />
+    <Compile Include="ViewModel\TagLayout\LayoutMode.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\TagCanvasCtrlViewModel.cs" />
     <Compile Include="ViewModel\TagCanvasCtrlViewModel_MainCanvas.cs" />
     <Compile Include="ViewModel\TagCanvasCtrlViewModel_SubCanvas.cs" />
+    <Compile Include="ViewModel\TagLayout\TagBoxSizeInf.cs" />
+    <Compile Include="ViewModel\TagLayout\TreeLayoutEnv.cs" />
+    <Compile Include="ViewModel\TagLayout\UIElementFactory.cs" />
+    <Compile Include="View\TagBox.xaml.cs">
+      <DependentUpon>TagBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TagCanvasCtrl.xaml.cs">
       <DependentUpon>TagCanvasCtrl.xaml</DependentUpon>
     </Compile>
@@ -139,6 +151,10 @@
     <Compile Include="View\ToolsBar.xaml.cs">
       <DependentUpon>ToolsBar.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\TagBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TagCanvasCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

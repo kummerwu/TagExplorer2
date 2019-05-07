@@ -31,10 +31,52 @@
                       Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"></MenuItem>
             <MenuItem Name="miCompactMoreLRTree" Tag="TREE_COMPACT_MORE" IsCheckable="True" Header="左右布局-紧凑" IsChecked="{Binding Is_TREE_COMPACT_MORE, Mode=OneWay}"
                       Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"></MenuItem>
+
+
+            
         </ContextMenu>
 
 
-        
+        <ContextMenu x:Name="tagAreaMenu" x:Key="tagAreaMenu" >
+
+            <MenuItem Header="打开标签目录" Command="{Binding OpenTagDir}" />
+            <MenuItem Header="拷贝标签路径" Command="{Binding CopyTagFullPath}"/>
+            <MenuItem Header="拷贝标签路径+日期"  Command="{Binding CopyTagFullPathWithDate}" />
+            <MenuItem Header="拷贝标签名称" Command="{Binding CopyTagName}" />
+            <Separator></Separator>
+            
+            <MenuItem Name="miTagOpt"         Header="标签操作">
+                <MenuItem Command="{Binding NewTag}" />
+                <MenuItem Command="{Binding NewBrotherTag}" />
+                <MenuItem Command="{Binding CopyTag}" />
+                <MenuItem Command="{Binding CutTag}" />
+                <MenuItem Command="{Binding PasteTag}" />
+                <MenuItem Command="{Binding DeleteTag}" />
+                <MenuItem Command="{Binding ModifyTag}" />
+                <MenuItem Command="{Binding UpTag}" />
+                <MenuItem Command="{Binding DownTag}" />
+                <MenuItem Command="{Binding NavigateTag}" >
+                    <MenuItem Command="{Binding NavigateTagUp}" />
+                    <MenuItem Command="{Binding NavigateTagDown}" />
+                    <MenuItem Command="{Binding NavigateTagLeft}" />
+                    <MenuItem Command="{Binding NavigateTagRight}" />
+                </MenuItem>
+            </MenuItem>
+            <Separator></Separator>
+            <MenuItem Name="miFileOpt"         Header="文件操作">
+                <MenuItem Command="{Binding NewFile}" />
+                <MenuItem Command="{Binding PasteFile}" />
+                <MenuItem Command="{Binding PasteDownloadFile}" />
+                <MenuItem Command="{Binding LinkFile}" />
+                <MenuItem Name="miEdit"         Header="编辑文件">
+                    <MenuItem Command="{Binding EditOneFile}" />
+                    <MenuItem Command="{Binding EditRTFFile}" />
+                </MenuItem>
+            </MenuItem>
+            <Separator></Separator>
+
+        </ContextMenu>
+
     </UserControl.Resources>
 
 

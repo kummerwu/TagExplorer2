@@ -324,6 +324,13 @@ namespace TagExplorer2.Model.Tag
             dir = System.IO.Path.Combine(dir, DateTime.Now.ToString("yyyyMMdd") + "-");
             ClipBoardSafe.SetText(dir);
         }
+        public void CopyTagNameToClipboard()
+        {
+            if (Title != null)
+            {
+                ClipBoardSafe.SetText(Title);
+            }
+        }
         public void CopyTagFullPathToClipboard()
         {
             string dir = this.GetDir(true);//拷贝目录名，需要保证路径存在

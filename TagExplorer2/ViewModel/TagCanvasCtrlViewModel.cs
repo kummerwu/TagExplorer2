@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -35,6 +36,38 @@ namespace TagExplorer2.ViewModel
             RaisePropertyChanged("Is_TREE_COMPACT");
             RaisePropertyChanged("Is_TREE_COMPACT_MORE");
         }
+        
+        
+
+        private ICommand changeLayoutMode;
+        public ICommand ChangeLayoutMode
+        {
+            get
+            {
+                return changeLayoutMode ?? (changeLayoutMode = new RelayCommand<MenuItem>((param) =>
+                {
+                    string mode = param.Tag as string;
+                    LayoutMode tmp;
+                    if (!string.IsNullOrEmpty(mode) &&  LayoutMode.TryParse(mode, out tmp)) {
+                        LayoutMode = tmp;
+                    }
+                }));
+            }
+        }
+
+
+        private ICommand openTagDir;
+        public ICommand OpenTagDir
+        {
+            get
+            {
+                return openTagDir ?? (openTagDir = new RelayCommand(() =>
+                {
+                    curTag?.OpenExplorer();
+                }));
+            }
+        }
+
         private ICommand copyTagFullPath;
         public ICommand CopyTagFullPath
         {
@@ -58,19 +91,26 @@ namespace TagExplorer2.ViewModel
                 }));
             }
         }
-
-        private ICommand changeLayoutMode;
-        public ICommand ChangeLayoutMode
+        private ICommand copyTagName;
+        public ICommand CopyTagName
         {
             get
             {
-                return changeLayoutMode ?? (changeLayoutMode = new RelayCommand<MenuItem>((param) =>
+                return copyTagName ?? (copyTagName = new RelayCommand(() =>
                 {
-                    string mode = param.Tag as string;
-                    LayoutMode tmp;
-                    if (!string.IsNullOrEmpty(mode) &&  LayoutMode.TryParse(mode, out tmp)) {
-                        LayoutMode = tmp;
-                    }
+                    curTag?.CopyTagNameToClipboard();
+                }));
+            }
+        }
+
+        private ICommand newTag;
+        public ICommand NewTag
+        {
+            get
+            {
+                return newTag ?? (newTag = new RelayCommand(() =>
+                {
+                    throw new NotSupportedException();
                 }));
             }
         }
