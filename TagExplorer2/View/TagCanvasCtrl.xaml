@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="TagExplorer2.View.TagCanvasCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TagExplorer2.View"
+             xmlns:vm="clr-namespace:TagExplorer2.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             >
+    <UserControl.Resources>
+        
+
+        <!-- ===============================================================
+        定义菜单资源
+        =============================================================== -->
+        <ContextMenu x:Key="layoutModeMenu" x:Name="layoutModeMenu">
+            <MenuItem  Name="miNormalTree" Tag="LRTREE_NO_COMPACT"    IsCheckable="True"  Header="树形布局-标准" IsChecked="{Binding Is_LRTREE_NO_COMPACT, Mode=OneWay}"
+                       Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}">
+            </MenuItem>
+            <MenuItem Name="miCompactTree" Tag="LRTREE_COMPACT"    IsCheckable="True" Header="树形布局-压缩" IsChecked="{Binding Is_LRTREE_COMPACT, Mode=OneWay}"
+                      Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"></MenuItem>
+            <MenuItem Name="miCompactMoreTree" Tag="LRTREE_COMPACT_MORE" IsCheckable="True" Header="树形布局-紧凑" IsChecked="{Binding Is_LRTREE_COMPACT_MORE, Mode=OneWay}"
+                      Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"></MenuItem>
+            
+            <Separator></Separator>
+
+            <MenuItem Name="miNormalLRTree"  Tag="TREE_NO_COMPACT"  IsCheckable="True" Header="左右布局-标准" IsChecked="{Binding Is_TREE_NO_COMPACT, Mode=OneWay}"
+                      Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"></MenuItem>
+            <MenuItem Name="miCompactLRTree"  Tag="TREE_COMPACT" IsCheckable="True" Header="左右布局-压缩" IsChecked="{Binding Is_TREE_COMPACT, Mode=OneWay}"
+                      Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"></MenuItem>
+            <MenuItem Name="miCompactMoreLRTree" Tag="TREE_COMPACT_MORE" IsCheckable="True" Header="左右布局-紧凑" IsChecked="{Binding Is_TREE_COMPACT_MORE, Mode=OneWay}"
+                      Command="{Binding ChangeLayoutMode}"  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"></MenuItem>
+        </ContextMenu>
+
+
+        
+    </UserControl.Resources>
+
+
+
+    <Grid Background ="Green" ContextMenu="{StaticResource layoutModeMenu}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" Name="connect"></RowDefinition>
+            <RowDefinition Height="*" Name="content"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Focusable="True" x:Name="connectCanvas"
+                 ></Canvas>
+        <ScrollViewer 
+                      
+                      x:Name="scrollViewer" 
+                      Grid.Row="1"
+                      
+                      VerticalAlignment="Top"  
+                      Background="White" VerticalScrollBarVisibility="Auto" 
+                      HorizontalScrollBarVisibility="Auto"  
+                        FocusVisualStyle="{x:Null}"
+                      ContextMenu="{StaticResource layoutModeMenu}">
+            <Canvas Focusable="True" x:Name="canvas"
+                    HorizontalAlignment="Left"  VerticalAlignment="Top"  
+                    Background="White" FocusVisualStyle="{x:Null}" >
+            </Canvas>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

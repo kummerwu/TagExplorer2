@@ -45,8 +45,28 @@ namespace TagExplorer2.ViewModel
 
             SimpleIoc.Default.Register<MainWindowViewModel>();
             SimpleIoc.Default.Register<ToolsBarViewModel>();
-        }
+            SimpleIoc.Default.Register<TagCanvasCtrlViewModel>();
 
+        }
+        public static TagCanvasCtrlViewModel TagCanvasCtrlViewModelFactory(string name)
+        {
+            if (name == "MainCanvas") return MainCanvas;
+            else return SubCanvas;
+        }
+        public static TagCanvasCtrlViewModel MainCanvas
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<TagCanvasCtrlViewModel>("MainCanvas");
+            }
+        }
+        public static TagCanvasCtrlViewModel SubCanvas
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<TagCanvasCtrlViewModel>("SubCanvas");
+            }
+        }
         public MainWindowViewModel MainWindow
         {
             get

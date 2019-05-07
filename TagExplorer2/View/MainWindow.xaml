@@ -33,13 +33,17 @@
 
                         <avalonDock:LayoutAnchorablePane DockWidth="150" x:Name="apane12" >
                             <avalonDock:LayoutAnchorable Title="顶层标签" CanClose="False" CanHide="False" x:Name="ID_MainCanvas">
-                                
+                                <local:TagCanvasCtrl  x:Name="MainCanvas"   Focusable="False">
+                                    <local:TagCanvasCtrl.Type>MainCanvas</local:TagCanvasCtrl.Type>
+                                </local:TagCanvasCtrl>
                             </avalonDock:LayoutAnchorable>
                         </avalonDock:LayoutAnchorablePane>
 
                         <avalonDock:LayoutAnchorablePane DockWidth="50" x:Name="apane13">
                             <avalonDock:LayoutAnchorable Title="底层标签" CanClose="False" CanHide="False" x:Name="ID_SubCanvas">
-                                
+                                <local:TagCanvasCtrl  x:Name="SubCanvas"   Focusable="False">
+                                    <local:TagCanvasCtrl.Type>SubCanvas</local:TagCanvasCtrl.Type>
+                                </local:TagCanvasCtrl>
                             </avalonDock:LayoutAnchorable>
                         </avalonDock:LayoutAnchorablePane>
 

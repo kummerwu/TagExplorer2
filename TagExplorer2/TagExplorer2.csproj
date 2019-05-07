@@ -125,12 +125,21 @@
     <Compile Include="Utils\IDisposableFactory.cs" />
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\TipsCenter.cs" />
+    <Compile Include="ViewModel\LayoutMode.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\TagCanvasCtrlViewModel.cs" />
+    <Compile Include="View\TagCanvasCtrl.xaml.cs">
+      <DependentUpon>TagCanvasCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ToolsBarViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\ToolsBar.xaml.cs">
       <DependentUpon>ToolsBar.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\TagCanvasCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
