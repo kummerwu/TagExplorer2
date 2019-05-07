@@ -39,7 +39,7 @@
 
 
 
-    <Grid Background ="Green" ContextMenu="{StaticResource layoutModeMenu}">
+    <Grid Background ="White" ContextMenu="{StaticResource layoutModeMenu}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30" Name="connect"></RowDefinition>
             <RowDefinition Height="*" Name="content"></RowDefinition>
@@ -55,7 +55,7 @@
                       Background="White" VerticalScrollBarVisibility="Auto" 
                       HorizontalScrollBarVisibility="Auto"  
                         FocusVisualStyle="{x:Null}"
-                      ContextMenu="{StaticResource layoutModeMenu}">
+                      >
             <Canvas Focusable="True" x:Name="canvas"
                     HorizontalAlignment="Left"  VerticalAlignment="Top"  
                     Background="White" FocusVisualStyle="{x:Null}" >

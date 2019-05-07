@@ -9,39 +9,32 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using TagExplorer2.Model.Config;
 using TagExplorer2.Model.Tag;
 
 namespace TagExplorer2.ViewModel
 {
-    public class TagCanvasCtrlViewModel:ViewModelBase
+    public abstract class TagCanvasCtrlViewModel:ViewModelBase
     {
         GUTag curTag = null;
-        LayoutMode layoutMode = LayoutMode.LRTREE_COMPACT;
-        public LayoutMode LayoutMode
-        {
-            get { return layoutMode; }
-            set
-            {
-                if (layoutMode != value)
-                {
-                    layoutMode = value;
-                    RaisePropertyChanged("LayoutMode");
-                    RaisePropertyChanged("Is_LRTREE_NO_COMPACT");
-                    RaisePropertyChanged("Is_LRTREE_COMPACT");
-                    RaisePropertyChanged("Is_LRTREE_COMPACT_MORE");
-                    RaisePropertyChanged("Is_TREE_NO_COMPACT");
-                    RaisePropertyChanged("Is_TREE_COMPACT");
-                    RaisePropertyChanged("Is_TREE_COMPACT_MORE");
-                }
-            }
-        }
+
+        public abstract LayoutMode LayoutMode { get; set; }
         public bool Is_LRTREE_NO_COMPACT { get { return LayoutMode == LayoutMode.LRTREE_NO_COMPACT; } }
         public bool Is_LRTREE_COMPACT { get { return LayoutMode == LayoutMode.LRTREE_COMPACT; } }
         public bool Is_LRTREE_COMPACT_MORE { get { return LayoutMode == LayoutMode.LRTREE_COMPACT_MORE; } }
         public bool Is_TREE_NO_COMPACT { get { return LayoutMode == LayoutMode.TREE_NO_COMPACT; } }
         public bool Is_TREE_COMPACT { get { return LayoutMode == LayoutMode.TREE_COMPACT; } }
         public bool Is_TREE_COMPACT_MORE { get { return LayoutMode == LayoutMode.TREE_COMPACT_MORE; } }
-
+        protected void RaiseLayoutChanged()
+        {
+            RaisePropertyChanged("LayoutMode");
+            RaisePropertyChanged("Is_LRTREE_NO_COMPACT");
+            RaisePropertyChanged("Is_LRTREE_COMPACT");
+            RaisePropertyChanged("Is_LRTREE_COMPACT_MORE");
+            RaisePropertyChanged("Is_TREE_NO_COMPACT");
+            RaisePropertyChanged("Is_TREE_COMPACT");
+            RaisePropertyChanged("Is_TREE_COMPACT_MORE");
+        }
         private ICommand copyTagFullPath;
         public ICommand CopyTagFullPath
         {

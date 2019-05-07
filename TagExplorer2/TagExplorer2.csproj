@@ -107,6 +107,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Config\CfgPathHelper.cs" />
     <Compile Include="Model\Config\CfgUserPath.cs" />
+    <Compile Include="Model\Config\DynamicCfg.cs" />
     <Compile Include="Model\Config\StaticCfg.cs" />
     <Compile Include="Model\FileSystem\CfgPath.cs" />
     <Compile Include="Model\FileSystem\PathHelper.cs" />
@@ -128,6 +129,8 @@
     <Compile Include="ViewModel\LayoutMode.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\TagCanvasCtrlViewModel.cs" />
+    <Compile Include="ViewModel\TagCanvasCtrlViewModel_MainCanvas.cs" />
+    <Compile Include="ViewModel\TagCanvasCtrlViewModel_SubCanvas.cs" />
     <Compile Include="View\TagCanvasCtrl.xaml.cs">
       <DependentUpon>TagCanvasCtrl.xaml</DependentUpon>
     </Compile>

@@ -31,7 +31,10 @@ namespace TagExplorer2.View
         {
             set
             {
-                DataContext = ViewModelLocator.TagCanvasCtrlViewModelFactory(value);
+                if (DataContext == null)
+                {
+                    DataContext = ViewModelLocator.TagCanvasCtrlViewModelFactory(value);
+                }
             }
         }
         
